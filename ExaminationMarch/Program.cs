@@ -11,9 +11,14 @@ namespace ExaminationMarch
     {
         static void Main(string[] args)
         {
+
+            //create lists:
             ExaminationMarch.Functions<int> sortingInt = new ExaminationMarch.Functions<int>();
             ExaminationMarch.Functions<char> sortingChara = new ExaminationMarch.Functions<char>();
             ExaminationMarch.Functions<string> sortingString= new ExaminationMarch.Functions<string>();
+            //try lists out
+            sortingInt.AddInt();
+          
             sortingInt.AddTry(1);
             sortingInt.AddTry(2);
             sortingInt.AddTry(3);

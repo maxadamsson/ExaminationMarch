@@ -11,14 +11,14 @@ namespace ExaminationMarch
 {
     internal class Functions<T>// where T : IComparable<T>
     {
-        public Node<T> first; //direct copy 
+        public Node<T> first;
         public Functions()
         {
             first = null;
         }
 
         //variabels I'll be using
-        public string[] var = { "integer (int)", "charachter (char)", "text (string)" };
+        public string[] var = { "integer (int)", "charachter (char)", "text (string)" }; 
         string input;
         int num;
         char chara;
@@ -28,11 +28,10 @@ namespace ExaminationMarch
             Console.WriteLine("The first value of the list has been deleted.");
             first = first.next;
         }
-        bool correct; 
 
         public void AddInt() // add bool + while loop so it'll repeat if the input is invalid! 
         {
-         //   while(!InputValid) //loop until valid input
+         //  while(InputValid == false) //loop until valid input // didn't work, stuck in loop
             {
                 Console.WriteLine($"Enter an {var[0]} to add to the list: ");
                 input = Console.ReadLine(); // Read input from the user as a string
@@ -40,12 +39,13 @@ namespace ExaminationMarch
                 {
                     Console.WriteLine($"You've entered the integer: {num}.");
                     T data = ((T)Convert.ChangeType(num, typeof(T)));
+                   // InputValid = true;
                     AddToList();
-                    // InputValid = true;
                 }
                 else
                 {
                     Console.WriteLine("Input couldn't be converted to int, please try again.");
+                   // InputValid = false;
                 }
             }
 
@@ -68,7 +68,7 @@ namespace ExaminationMarch
         }
         private void AddToList()
         {
-            T data = GenerateData();
+            T data = GenerateData(); //this is probably the issue.
             if (first == null)
                 first = new Node<T>(data); //if the first is empty add Data there
             else
@@ -81,7 +81,7 @@ namespace ExaminationMarch
                 current.next = new Node<T>(data);
             }
         }
-        private T GenerateData() //not a good fix but I'm stuck 
+        private T GenerateData() //used in AddToList 
         {   
             return default(T); 
         }
@@ -160,7 +160,7 @@ namespace ExaminationMarch
     }
    
 }
-internal class Node<T> //also direct copy. Using for now to get started
+internal class Node<T> // direct copy. Using for now to get started
 {
     public T value { get; set; }
     public Node<T> next { get; set; }
